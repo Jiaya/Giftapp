@@ -47,7 +47,6 @@ function goBack() {
 }
 
 // Add event listeners
-changeColorBtn.addEventListener('click', changeBackgroundColor);
 chooseOwnList.addEventListener('click', showOwnList);
 chooseOthersList.addEventListener('click', showOthersList);
 
