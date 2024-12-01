@@ -6,7 +6,7 @@ const ownListContainer = document.getElementById('OwnlistContainer');
 const othersListContainer = document.getElementById('OtherslistContainer');
 const nameListOwn = document.querySelector('#OwnlistContainer #nameList');
 const nameListOthers = document.querySelector('#OtherslistContainer #nameList');
-const backBtns = document.querySelectorAll('#backBtn');
+const backBtns = document.querySelectorAll('.backBtn');
 
 // Define a shared list of names
 const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta','Ettore','Matteo'];
