@@ -12,10 +12,21 @@
   </header>
 
   <main>
-    <h3>Scegli cosa fare:</h3>
-    <button id="changeColorBtn">Change Background Color</button>
-    <button id="chooseOwnList">Modifica la tua lista desideri</button>
-    <button id="chooseOthersList">Guarda la lista desideri di altri e conferma cosa prenderai loro</button>
+    <div id="buttonContainer">
+      <h3> Scegli cosa fare:</h3>
+      <button id="chooseOwnList">Modifica la tua lista desideri</button>
+      <button id="chooseOthersList">Guarda la lista desideri di altri e conferma cosa prenderai loro</button>
+    </div>
+    <div id="OwnlistContainer" style="display: none;">
+      <h3>Scegli il tuo nome dalla lista:</h3>
+      <ul id="nameList"></ul>
+      <button id="backBtn">Torna Indietro</button>
+    </div>
+    <div id="OtherslistContainer" style="display: none;">
+      <h3>Scegli il tuo nome dalla lista così potrai vedere le liste degli altri:</h3>
+      <ul id="nameList"></ul>
+      <button id="backBtn">Torna Indietro</button>
+    </div>
   </main>
 
   <script src="script.js"></script> <!-- Link to JS file -->
