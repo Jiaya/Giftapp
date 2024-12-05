@@ -11,6 +11,9 @@ const seeOtherslistContainer = document.getElementById('seeOtherslistContainer')
 const nameListOwn = document.getElementById('nameListOwn');
 const nameListOthers = document.getElementById('nameListOthers');
 const backBtns = document.querySelectorAll('.backBtn');
+const newItemInput = document.getElementById('newItemInput');
+const addItemBtn = document.getElementById('addItemBtn');
+
 
 // Define a shared list of names and mock gift lists for each person
 const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta', 'Ettore', 'Matteo'];
@@ -29,9 +32,6 @@ const giftLists = {
 // Variable to store the current user's name
 let currentUser = null;
 
-// Event Listener for adding new items to the gift list
-const newItemInput = document.getElementById('newItemInput');
-const addItemBtn = document.getElementById('addItemBtn');
 
 // Populate a list and add click functionality
 function populateList(listElement, names) {
