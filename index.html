@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaia's giftgiving experience</title>
+  <title>Gaia's Gift-Giving Experience</title>
   <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
 </head>
 <body>
@@ -13,28 +13,33 @@
 
   <main>
     <div id="buttonContainer">
-      <h3> Scegli cosa fare:</h3>
-      <button id="chooseOwnList">Modifica la tua lista desideri</button>
-      <button id="chooseOthersList">Guarda la lista desideri di altri e conferma cosa prenderai loro</button>
+      <h3>Scegli cosa fare:</h3>
+      <button id="goToOwnList">Modifica la tua lista desideri</button>
+      <button id="goToOthersList">Guarda la lista desideri di altri e conferma cosa prenderai loro</button>
     </div>
-    <div id="OwnlistContainer" style="display: none;">
+
+    <div id="ownlistContainer" style="display: none;">
       <h3>Scegli il tuo nome dalla lista:</h3>
       <ul id="nameList"></ul>
       <button class="backBtn">Torna Indietro</button>
     </div>
-    <div id="ModifyOwnlistContainer" style="display: none;">
+
+    <div id="seeOwnlistContainer" style="display: none;">
       <h3>Questa è la tua lista:</h3>
       <ul id="ownGiftList"></ul>
-      <button id="modifyOwnList"> Cambia la tua lista</button>
+      <button id="modifyOwnList">Aggiungi alla tua lista</button>
       <button class="backBtn">Torna Indietro</button>
     </div>
-    <div id="OtherslistContainer" style="display: none;">
+
+    <div id="otherslistContainer" style="display: none;">
       <h3>Scegli il tuo nome dalla lista così potrai vedere le liste degli altri:</h3>
       <ul id="nameList"></ul>
       <button class="backBtn">Torna Indietro</button>
     </div>
-    <div id="SeeOtherslistContainer" style="display: none;">
-      <h3>Questi sono i desideri della famiglia</h3>
+
+    <div id="seeOtherslistContainer" style="display: none;">
+      <h3>Questi sono i desideri della famiglia:</h3>
+      <p>Le cose in rosso sono già state selezionate da qualcuno.</p>
       <ul id="othersGiftList"></ul>
       <button class="backBtn">Torna Indietro</button>
     </div>
