@@ -1,18 +1,30 @@
 // Select the buttons and containers
-const chooseOwnList = document.getElementById('chooseOwnList');
-const chooseOthersList = document.getElementById('chooseOthersList');
+const goToOwnList = document.getElementById('goToOwnList');
+const goToOthersList = document.getElementById('goToOthersList');
 const buttonContainer = document.getElementById('buttonContainer');
-const ownListContainer = document.getElementById('OwnlistContainer');
-const ownGiftList = document.getElementById('OwnGiftList');
-const othersGiftList = document.getElementById('OthersGiftList');
-const othersListContainer = document.getElementById('OtherslistContainer');
-const nameListOwn = document.querySelector('#OwnlistContainer #nameList');
-const nameListOthers = document.querySelector('#OtherslistContainer #nameList');
+const ownListContainer = document.getElementById('ownlistContainer');
+const seeOwnlistContainer = document.getElementById('seeOwnlistContainer');
+const ownGiftList = document.getElementById('ownGiftList');
+const othersGiftList = document.getElementById('othersGiftList');
+const othersListContainer = document.getElementById('otherslistContainer');
+const seeOtherslistContainer = document.getElementById('seeOtherslistContainer');
+const nameListOwn = document.querySelector('#ownlistContainer #nameList');
+const nameListOthers = document.querySelector('#otherslistContainer #nameList');
 const backBtns = document.querySelectorAll('.backBtn');
 
-// Define a shared list of names
-const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta','Ettore','Matteo'];
-const OwnGiftList = []
+// Define a shared list of names and mock gift lists for each person
+const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta', 'Ettore', 'Matteo'];
+const giftLists = {
+  'Mamma/Kuku': [],
+  'Armando/Babbo': [],
+  'Mei/Mamma': [],
+  'Marzia': [],
+  'Gaia': [],
+  'Delia': [],
+  'Marta': [],
+  'Ettore': [],
+  'Matteo': []
+};
 
 // Create a function to show the "Own List" container
 function showOwnList() {
@@ -21,9 +33,10 @@ function showOwnList() {
 }
 
 // Create a function to show the "Own Gift List" container
-function showOwnGiftList() {
-  populateList(nameListOthers, sharedNames);
-  toggleVisibility(buttonContainer, othersListContainer);
+function showOwnGiftList(name) {
+  const gifts = giftLists[name] || [];
+  populateList(ownGiftList, gifts);
+  toggleVisibility(ownListContainer, seeOwnlistContainer);
 }
 
 // Create a function to show the "Others List" container
@@ -33,13 +46,34 @@ function showOthersList() {
 }
 
 // Create a function to show the "Others Gift List" container
+function showOthersGiftList(name) {
+  const otherGifts = sharedNames
+    .filter(person => person !== name)
+    .map(person => ({ name: person, gifts: giftLists[person] || [] }));
+
+  othersGiftList.innerHTML = ''; // Clear the list
+  otherGifts.forEach(entry => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${entry.name}</strong>: ${entry.gifts.join(', ')}`;
+    othersGiftList.appendChild(li);
+  });
+
+  toggleVisibility(othersListContainer, seeOtherslistContainer);
+}
 
 // Helper function to populate a list dynamically
-function populateList(listElement, names) {
+function populateList(listElement, items) {
   listElement.innerHTML = ''; // Clear the list
-  names.forEach(name => {
+  items.forEach(item => {
     const li = document.createElement('li');
-    li.textContent = name;
+    li.textContent = item;
+    li.addEventListener('click', () => {
+      if (listElement === nameListOwn) {
+        showOwnGiftList(item);
+      } else if (listElement === nameListOthers) {
+        showOthersGiftList(item);
+      }
+    });
     listElement.appendChild(li);
   });
 }
@@ -54,12 +88,14 @@ function toggleVisibility(hideContainer, showContainer) {
 function goBack() {
   ownListContainer.style.display = 'none';
   othersListContainer.style.display = 'none';
+  seeOwnlistContainer.style.display = 'none';
+  seeOtherslistContainer.style.display = 'none';
   buttonContainer.style.display = 'block';
 }
 
 // Add event listeners
-chooseOwnList.addEventListener('click', showOwnList);
-chooseOthersList.addEventListener('click', showOthersList);
+goToOwnList.addEventListener('click', showOwnList);
+goToOthersList.addEventListener('click', showOthersList);
 
 // Attach the back button functionality
 backBtns.forEach(btn => {
