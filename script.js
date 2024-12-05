@@ -3,6 +3,8 @@ const chooseOwnList = document.getElementById('chooseOwnList');
 const chooseOthersList = document.getElementById('chooseOthersList');
 const buttonContainer = document.getElementById('buttonContainer');
 const ownListContainer = document.getElementById('OwnlistContainer');
+const ownGiftList = document.getElementById('OwnGiftList');
+const othersGiftList = document.getElementById('OthersGiftList');
 const othersListContainer = document.getElementById('OtherslistContainer');
 const nameListOwn = document.querySelector('#OwnlistContainer #nameList');
 const nameListOthers = document.querySelector('#OtherslistContainer #nameList');
@@ -10,6 +12,7 @@ const backBtns = document.querySelectorAll('.backBtn');
 
 // Define a shared list of names
 const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta','Ettore','Matteo'];
+const OwnGiftList = []
 
 // Create a function to show the "Own List" container
 function showOwnList() {
@@ -17,11 +20,19 @@ function showOwnList() {
   toggleVisibility(buttonContainer, ownListContainer);
 }
 
+// Create a function to show the "Own Gift List" container
+function showOwnGiftList() {
+  populateList(nameListOthers, sharedNames);
+  toggleVisibility(buttonContainer, othersListContainer);
+}
+
 // Create a function to show the "Others List" container
 function showOthersList() {
   populateList(nameListOthers, sharedNames);
   toggleVisibility(buttonContainer, othersListContainer);
 }
+
+// Create a function to show the "Others Gift List" container
 
 // Helper function to populate a list dynamically
 function populateList(listElement, names) {
