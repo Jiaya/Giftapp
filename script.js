@@ -12,6 +12,7 @@ const nameListOwn = document.querySelector('#ownlistContainer #nameList');
 const nameListOthers = document.querySelector('#otherslistContainer #nameList');
 const backBtns = document.querySelectorAll('.backBtn');
 
+
 // Define a shared list of names and mock gift lists for each person
 const sharedNames = ['Mamma/Kuku', 'Armando/Babbo', 'Mei/Mamma', 'Marzia', 'Gaia', 'Delia', 'Marta', 'Ettore', 'Matteo'];
 const giftLists = {
@@ -25,6 +26,13 @@ const giftLists = {
   'Ettore': [],
   'Matteo': []
 };
+
+// Variable to store the current user's name
+let currentUser = null;
+
+// Event Listener for adding new items to the gift list
+const newItemInput = document.getElementById('newItemInput');
+const addItemBtn = document.getElementById('addItemBtn');
 
 // Create a function to show the "Own List" container
 function showOwnList() {
@@ -76,6 +84,33 @@ function populateList(listElement, items) {
     });
     listElement.appendChild(li);
   });
+}
+
+addItemBtn.addEventListener('click', () => {
+  const newItem = newItemInput.value.trim();
+  if (newItem && currentUser) {
+    // Add the new item to the user's gift list
+    if (!giftLists[currentUser]) {
+      giftLists[currentUser] = [];
+    }
+    giftLists[currentUser].push(newItem);
+
+    // Update the displayed list
+    populateList(ownGiftList, giftLists[currentUser]);
+
+    // Clear the input field
+    newItemInput.value = '';
+  } else {
+    alert('Inserisci un elemento valido per aggiungere alla lista.');
+  }
+});
+
+// Modified showOwnGiftList function to set the current user
+function showOwnGiftList(name) {
+  currentUser = name; // Set the current user
+  const gifts = giftLists[name] || [];
+  populateList(ownGiftList, gifts);
+  toggleVisibility(ownListContainer, seeOwnlistContainer);
 }
 
 // Helper function to toggle visibility between containers
